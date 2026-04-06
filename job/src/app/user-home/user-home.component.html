@@ -1,0 +1,141 @@
+<!-- Top Header with Home Button -->
+<div class="user-header">
+  <button class="home-btn" (click)="goToPortalHome()">
+    <i class="fas fa-home"></i> Home
+  </button>
+</div>
+
+<div class="container" [ngClass]="{ 'dark-mode': isDarkMode }">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <ul class="menu">
+      <li><a href="#" (click)="openProfileModal($event)"><i class="fas fa-user"></i> Profile</a></li>
+      <li><a href="#" (click)="viewAppliedJobs($event)"><i class="fas fa-briefcase"></i> Applied Jobs</a></li>
+      <li><a href="#"><i class="fas fa-bookmark"></i> Saved Jobs</a></li>
+      <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+      <li><a href="#" (click)="updateProfile($event)"><i class="fas fa-edit"></i> Update Profile</a></li>
+    </ul>
+    <button class="dark-toggle" (click)="toggleDarkMode()">
+      <i class="fas" [ngClass]="isDarkMode ? 'fa-sun' : 'fa-moon'"></i> Dark Mode
+    </button>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content">
+    <section class="job-listings">
+      <h2>Available Jobs</h2>
+      <div *ngIf="jobs.length > 0; else noJobs" class="jobs-grid">
+        <div class="job-card" *ngFor="let job of jobs">
+          <img src="/office-icon.jpeg" alt="Office" class="job-icon"/>
+          <h3>{{ job.jobTitle }}</h3>
+          <p><strong>Company:</strong> {{ job.companyName }}</p>
+          <p><strong>Location:</strong> {{ job.location }}</p>
+          <p><strong>Salary:</strong> {{ job.salary }}</p>
+          <p><strong>Experience:</strong> {{ job.experience }}</p>
+          <p><strong>Skills:</strong> {{ job.skills }}</p>
+          <button class="apply-btn" (click)="applyToJob(job)">Apply Now</button>
+        </div>
+      </div>
+      <ng-template #noJobs>
+        <p>No jobs available right now. 🚀</p>
+      </ng-template>
+    </section>
+
+    <!-- Side Content -->
+    <div class="side-content">
+      <section class="top-companies">
+        <h2>Top Companies</h2>
+        <div *ngFor="let comp of topCompanies" class="company-card">
+          <h3>{{ comp }}</h3>
+        </div>
+      </section>
+
+      <section class="recommended-jobs">
+        <h2>Recommended Jobs</h2>
+        <div *ngFor="let rec of recommendedJobs" class="recommended-card">
+          <h3>{{ rec.title }}</h3>
+          <p>{{ rec.company }} – {{ rec.location }}</p>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="footer-container">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <img src="/logo.jpg" alt="Jobsphere Logo" class="footer-logo" />
+      <p>Connect with us</p>
+      <div class="social-icons">
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-linkedin"></i>
+        <i class="fab fa-envelope"></i>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <div class="link-column">
+        <h4>Company</h4>
+        <a href="#" (click)="openModal('About Us', 'Jobsphere connects talents!', $event)">About Us</a>
+        <a href="#" (click)="openModal('Careers', 'Join our amazing team!', $event)">Careers</a>
+        <a href="#" (click)="openModal('Employer Home', 'Post jobs easily.', $event)">Employer Home</a>
+        <a href="#" (click)="openModal('Sitemap', 'Find all pages here.', $event)">Sitemap</a>
+        <a href="#" (click)="openModal('Credits', 'Thanks to our contributors.', $event)">Credits</a>
+      </div>
+      <div class="link-column">
+        <h4>Help & Support</h4>
+        <a href="#" (click)="openModal('Help Center', 'Find answers here.', $event)">Help Center</a>
+        <a href="#" (click)="openModal('Summons / Notices', 'Legal information.', $event)">Summons / Notices</a>
+        <a href="#" (click)="openModal('Grievances', 'Raise any concerns.', $event)">Grievances</a>
+        <a href="#" (click)="openModal('Trust & Safety', 'We prioritize your safety.', $event)">Trust & Safety</a>
+      </div>
+      <div class="link-column">
+        <h4>Legal</h4>
+        <a href="#" (click)="openModal('Privacy Policy', 'We value your privacy.', $event)">Privacy Policy</a>
+        <a href="#" (click)="openModal('Terms & Conditions', 'Read carefully.', $event)">Terms & Conditions</a>
+        <a href="#" (click)="openModal('Fraud Alert', 'Stay protected.', $event)">Fraud Alert</a>
+      </div>
+      <div class="link-column app-download">
+        <h4>Apply on the Go</h4>
+        <p>Get real-time job updates</p>
+        <div class="app-icons">
+          <img src="/playstore.png" alt="Google Play" />
+          <img src="/appstore.png" alt="App Store" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-divider"></div>
+
+  <div class="footer-bottom">
+    <p>All trademarks are the property of their respective owners. | © 2025 Jobsphere India Ltd.</p>
+    <div class="business-logos">
+      <img src="/sha.png" alt="Sha Logo" />
+      <img src="/iimjobs.png" alt="IIM Jobs Logo" />
+      <img src="/hirist.png" alt="Hirist Logo" />
+      <img src="/jobhai.png" alt="Job Hai Logo" />
+    </div>
+  </div>
+
+  <!-- Footer Modal -->
+  <div *ngIf="showModal" class="modal-overlay">
+    <div class="modal-content">
+      <h2>{{ modalTitle }}</h2>
+      <p>{{ modalMessage }}</p>
+      <button (click)="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <!-- Profile Modal -->
+  <div *ngIf="showProfileModal" class="modal-overlay">
+    <div class="modal-content">
+      <h2>Profile Options</h2>
+      <button (click)="viewProfile()" class="modal-button">View Profile</button>
+      <button (click)="logout()" class="modal-button logout-btn">Logout</button>
+      <button (click)="closeProfileModal()" class="modal-close-btn">Close</button>
+    </div>
+  </div>
+</footer>

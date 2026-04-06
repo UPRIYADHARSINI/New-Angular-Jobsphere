@@ -1,0 +1,33 @@
+<div class="admin-login-container">
+    <!-- Background Image -->
+    <img src="/admin.jpg" alt="Office Background" class="background-image" />
+  
+    <!-- Back to Home Button -->
+    <button class="back-btn" (click)="goToHome()">⬅ Back to Home</button>
+  
+    <div class="login-content">
+      <!-- Left Section: New to JobSphere? -->
+      <div class="new-to-jobsphere">
+        <img src="/admin-new.jpeg" alt="Admin Professional" class="admin-image" />
+        <h2>New to JobSphere?</h2>
+        <ul>
+          <li>✔ Manage job postings efficiently.</li>
+          <li>✔ Access user and recruiter data.</li>
+          <li>✔ Monitor platform activity.</li>
+          <li>✔ Ensure smooth operations.</li>
+        </ul>
+        <button class="register-btn" disabled>Admin Access Only</button>
+      </div>
+  
+      <!-- Right Section: Login Form -->
+      <div class="login-form">
+        <h2>Admin Login</h2>
+        <form (ngSubmit)="onLogin()">
+          <input type="text" placeholder="Enter Email ID / Username" [(ngModel)]="username" name="username" required />
+          <input type="password" placeholder="Enter Password" [(ngModel)]="password" name="password" required />
+          <button type="submit" class="login-btn">Login</button>
+        </form>
+        <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+      </div>
+    </div>
+</div>

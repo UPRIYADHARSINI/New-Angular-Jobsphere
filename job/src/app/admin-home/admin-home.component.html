@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="header">
+    <h1>👋 Welcome Admin</h1>
+    <button class="logout-btn" (click)="logout()">LOGOUT</button>
+  </div>
+
+  <!-- Display error message if it exists -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div class="content">
+    <!-- Users Section -->
+    <div class="section" *ngFor="let user of users">
+      <div class="card">
+        <h3>{{ user.name }}</h3>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Phone:</strong> {{ user.phone }}</p>
+        <button class="view-btn" (click)="viewUserActivity(user._id)">VIEW ACTIVITY</button>
+      </div>
+    </div>
+
+    <!-- Recruiters Section -->
+    <div class="section" *ngFor="let recruiter of recruiters">
+      <div class="card">
+        <h3>{{ recruiter.companyName }}</h3>
+        <p><strong>Email:</strong> {{ recruiter.email }}</p>
+        <p><strong>Phone:</strong> {{ recruiter.contactNumber }}</p>
+        <button class="view-btn" (click)="viewRecruiterActivity(recruiter._id)">VIEW ACTIVITY</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Activity Modal -->
+  <app-user-activity-modal
+    *ngIf="showUserModal"
+    [userData]="selectedUser"
+    (close)="closeUserModal()"
+  ></app-user-activity-modal>
+
+  <!-- Recruiter Activity Modal -->
+  <app-recruiter-activity-modal
+    *ngIf="showRecruiterModal"
+    [recruiterData]="selectedRecruiter"
+    (close)="closeRecruiterModal()"
+  ></app-recruiter-activity-modal>
+</div>

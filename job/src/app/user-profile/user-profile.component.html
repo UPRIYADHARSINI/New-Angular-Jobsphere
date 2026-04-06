@@ -1,0 +1,68 @@
+<div class="profile-container">
+  <div class="profile-header">
+    <!-- Profile Photo Section -->
+    <div class="profile-pic-wrapper">
+      <div
+        class="profile-pic"
+        [ngStyle]="{ 'background-image': 'url(' + (profile.profileImageUrl || '/default-avatar.png') + ')' }"
+      ></div>
+      <label class="upload-label">
+        <input type="file" (change)="uploadProfilePhoto($event)" accept="image/*" hidden />
+        <span class="upload-btn">Change</span>
+      </label>
+    </div>
+
+    <!-- Profile Info -->
+    <div class="profile-info">
+      <h2>{{ profile.name || 'Loading...' }}</h2>
+      <p>Email: {{ profile.email || 'N/A' }}</p>
+      <p>Phone: {{ profile.phone || 'N/A' }}</p>
+      <p>Qualification: {{ profile.qualification || 'N/A' }}</p>
+      <p>Status: {{ profile.status || 'N/A' }}</p>
+    </div>
+
+    <!-- Edit Button -->
+    <button (click)="toggleEdit()" class="edit-btn">
+      {{ isEditMode ? 'Cancel' : 'Edit Profile' }}
+    </button>
+  </div>
+
+  <!-- Edit Form -->
+  <form *ngIf="isEditMode" (ngSubmit)="updateProfile()" class="edit-form">
+    <label>Name <input type="text" [(ngModel)]="profile.name" name="name" required /></label>
+    <label>Email <input type="email" [(ngModel)]="profile.email" name="email" required /></label>
+    <label>Phone <input type="text" [(ngModel)]="profile.phone" name="phone" /></label>
+    <label
+      >Password
+      <input type="password" [(ngModel)]="profile.password" name="password" placeholder="Leave blank to keep unchanged" />
+    </label>
+    <label>Qualification <input type="text" [(ngModel)]="profile.qualification" name="qualification" /></label>
+    <label>Status <input type="text" [(ngModel)]="profile.status" name="status" /></label>
+    <button type="submit" class="save-btn">Save Changes</button>
+  </form>
+
+  <!-- Resume Upload Section -->
+  <div class="quick-links">
+    <h3>Quick Links</h3>
+    <ul>
+      <li>
+        <span>Resume</span>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <a *ngIf="profile.resumeUrl" [href]="profile.resumeUrl" target="_blank" style="color: #007bff; font-weight: 500;"
+            >📄 View Resume</a
+          >
+          <label class="upload-label">
+            <input type="file" (change)="uploadResume($event)" accept=".pdf" hidden />
+            <span class="upload-btn">Upload</span>
+          </label>
+        </div>
+      </li>
+      <li><span>Resume headline</span> <a href="#">Add</a></li>
+      <li><span>Key skills</span> <a href="#">Add</a></li>
+      <li><span>Education</span> <a href="#">Add</a></li>
+      <li><span>IT skills</span> <a href="#">Add</a></li>
+      <li><span>Projects</span> <a href="#">Add</a></li>
+      <li><span>Profile summary</span> <a href="#">Add</a></li>
+    </ul>
+  </div>
+</div>

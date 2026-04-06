@@ -1,0 +1,37 @@
+<div class="post-job-container">
+    <h2>Post a Job</h2>
+    <form (ngSubmit)="postJob()" class="job-form">
+      <div class="form-group">
+        <label for="jobTitle">Job Role:</label>
+        <input type="text" id="jobTitle" [(ngModel)]="job.jobTitle" name="jobTitle" required placeholder="e.g., Data Analyst" />
+      </div>
+      <div class="form-group">
+        <label for="companyName">Company Name:</label>
+        <input type="text" id="companyName" [(ngModel)]="job.companyName" name="companyName" required placeholder="e.g., Mofoy Consultancy" />
+      </div>
+      <div class="form-group">
+        <label for="location">Location:</label>
+        <input type="text" id="location" [(ngModel)]="job.location" name="location" required placeholder="e.g., Virudhunagar, Tamil Nadu" />
+      </div>
+      <div class="form-group">
+        <label for="salary">Salary:</label>
+        <input type="text" id="salary" [(ngModel)]="job.salary" name="salary" required placeholder="e.g., 50000" />
+      </div>
+      <div class="form-group">
+        <label for="experience">Experience:</label>
+        <input type="text" id="experience" [(ngModel)]="job.experience" name="experience" required placeholder="e.g., 0-2 years" />
+      </div>
+      <div class="form-group">
+        <label for="skills">Skills:</label>
+        <input type="text" id="skills" [(ngModel)]="job.skills" name="skills" required placeholder="e.g., C++, Java" />
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" [(ngModel)]="job.description" name="description" placeholder="Job description..."></textarea>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn blue">Post Job</button>
+        <button type="button" class="btn yellow" (click)="goBack()">Back</button>
+      </div>
+    </form>
+  </div>

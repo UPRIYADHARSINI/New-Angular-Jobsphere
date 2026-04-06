@@ -1,0 +1,65 @@
+<div class="recruiter-container">
+  <header class="profile-header">
+    <div class="profile-info">
+      <img src="{{ recruiter?.profileImageUrl || '/profile-icon.png' }}" alt="Profile" class="profile-pic" />
+      <div class="profile-text">
+        <h2>{{ recruiter?.name || 'No Name' }}</h2>
+        <p><strong>Email:</strong> {{ recruiter?.email || '-' }}</p>
+        <p><strong>Contact:</strong> {{ recruiter?.contactNumber || '-' }}</p>
+        <p><strong>Company:</strong> {{ recruiter?.companyName || '-' }}</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn yellow" (click)="editProfile()">Edit Profile</button>
+      <button class="btn blue" (click)="goToPostJob()">Post a Job</button>
+      <button class="btn back-btn" (click)="goBack()">← Back to Home</button>
+    </div>
+  </header>
+
+  <section class="posted-jobs-section">
+    <h3>My Posted Jobs</h3>
+    <div *ngIf="postedJobs.length === 0">
+      <p>No jobs posted yet.</p>
+    </div>
+    <div *ngFor="let job of postedJobs" class="job-card">
+      <h4>{{ job.jobTitle }} at {{ job.companyName }}</h4>
+      <p><strong>Location:</strong> {{ job.location }}</p>
+      <p><strong>Salary:</strong> {{ job.salary }}</p>
+      <p><strong>Experience:</strong> {{ job.experience }}</p>
+      <p><strong>Skills:</strong> {{ job.skills }}</p>
+      <p><strong>Description:</strong> {{ job.description }}</p>
+
+      <button class="btn red" (click)="deleteJob(job._id)">Delete Job</button>
+
+      <h5>Applicants</h5>
+      <div *ngIf="job.applicants?.length; else noApplicants">
+        <div *ngFor="let applicant of job.applicants" class="applicant-card">
+          <p>{{ applicant.name }} ({{ applicant.email }}) - Status: {{ applicant.status || 'Applied' }}</p>
+          <a [href]="applicant.resumeLink" target="_blank" *ngIf="applicant.resumeLink">View Resume</a>
+          <button class="btn green" *ngIf="applicant.status !== 'Recruited'" (click)="recruitApplicant(job._id, applicant.email)">Recruit</button>
+          <span *ngIf="applicant.status === 'Recruited'" class="recruited-label">Recruited 🎉</span>
+        </div>
+      </div>
+      <ng-template #noApplicants>
+        <p>No applicants yet.</p>
+      </ng-template>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-sections">
+      <div class="column">
+        <h4>Company</h4>
+        <a href="#">About Us</a>
+        <a href="#">Careers</a>
+        <a href="#">Employer Home</a>
+      </div>
+      <div class="column">
+        <h4>Help</h4>
+        <a href="#">Help Center</a>
+        <a href="#">Trust & Safety</a>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2025 JobSphere India Ltd.</p>
+  </footer>
+</div>

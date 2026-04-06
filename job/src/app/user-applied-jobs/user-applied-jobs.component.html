@@ -1,0 +1,16 @@
+<div class="container">
+    <h2>My Applied Jobs</h2>
+    <button (click)="refreshJobs()" class="refresh-button">Refresh</button>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  
+    <div class="job-list">
+      <div class="job-card" *ngFor="let job of jobs">
+        <h3>{{ job.jobTitle }}</h3>
+        <p><strong>Company:</strong> {{ job.companyName }}</p>
+        <p><strong>Location:</strong> {{ job.location }}</p>
+        <p><strong>Status:</strong> {{ job.applicationStatus || 'Not available' }}</p>
+        <p><strong>Applied On:</strong> {{ job.appliedDate | date:'MMM d, yyyy, h:mm:ss a' }}</p>
+      </div>
+      <div *ngIf="jobs.length === 0">No jobs applied yet.</div>
+    </div>
+  </div>

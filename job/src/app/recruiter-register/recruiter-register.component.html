@@ -1,0 +1,39 @@
+<div class="recruiter-register-container">
+    <div class="info-section">
+      <h2>Recruit Right Candidate For Right Job</h2>
+      <ul>
+        <li>✔️ Register and Post Jobs for Free Now!</li>
+        <li>✔️ Over 2.5 Million Verified Resumes</li>
+        <li>✔️ Unlimited Job Post & Hire Applicants Faster</li>
+        <li>✔️ Search Professional CVs at Your Fingertips</li>
+      </ul>
+      <img src="/recruiter-icon.png" alt="Recruiter Image" class="recruiter-img" />
+    </div>
+  
+    <div class="form-section">
+      <h2>Recruiter Registration</h2>
+      <form (ngSubmit)="registerRecruiter()" #recruitForm="ngForm">
+        <input type="text" placeholder="Name *" [(ngModel)]="recruiter.name" name="name" required />
+        
+        <select [(ngModel)]="recruiter.companyType" name="companyType" required>
+          <option value="" disabled selected>Select Company Type *</option>
+          <option value="IT">IT</option>
+          <option value="Finance">Finance</option>
+          <option value="Education">Education</option>
+          <option value="Healthcare">Healthcare</option>
+          <option value="Others">Others</option>
+        </select>
+  
+        <input type="text" placeholder="Company Name *" [(ngModel)]="recruiter.companyName" name="companyName" required />
+        <input type="text" placeholder="Main Branch *" [(ngModel)]="recruiter.mainBranch" name="mainBranch" required />
+        <input type="number" placeholder="Company Experience (Years) *" [(ngModel)]="recruiter.experience" name="experience" required />
+        <input type="email" placeholder="Company Email ID *" [(ngModel)]="recruiter.email" name="email" required />
+        <input type="tel" placeholder="Contact Number *" [(ngModel)]="recruiter.contactNumber" name="contactNumber" required pattern="^[0-9]{10}$" />
+        <input type="url" placeholder="Company Website" [(ngModel)]="recruiter.website" name="website" />
+        <input type="password" placeholder="Enter Password" [(ngModel)]="recruiter.password" name="password" required/>
+
+        <button type="submit" class="register-btn">Register</button>
+      </form>
+    </div>
+  </div>
+  

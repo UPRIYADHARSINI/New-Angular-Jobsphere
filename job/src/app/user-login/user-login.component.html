@@ -1,0 +1,41 @@
+<div class="header-actions">
+</div>
+<div class="login-container">
+    <!-- Left Section -->
+    <div class="login-left">
+      <button class="btn back-btn" (click)="goBack()">← Back to Home</button>
+      <img src="/user-login.png" alt="Login Illustration" class="side-image" />
+      <h2>New to JobSphere?</h2>
+      <ul>
+        <li>✔️ One click apply using JobSphere profile.</li>
+        <li>✔️ Get relevant job recommendations.</li>
+        <li>✔️ Showcase profile to top companies and consultants.</li>
+        <li>✔️ Know application status on applied jobs.</li>
+      </ul>
+      <button (click)="goToRegister()">Register for Free</button>
+    </div>
+  
+    <!-- Right Section -->
+    <div class="login-right">
+      <h2>Login</h2>
+      <form (ngSubmit)="login()" #loginForm="ngForm" novalidate>
+        <input
+          type="email"
+          placeholder="Enter Email ID / Username"
+          [(ngModel)]="user.email"
+          name="email"
+          required
+        />
+        <input
+          type="password"
+          placeholder="Enter Password"
+          [(ngModel)]="user.password"
+          name="password"
+          required
+        />
+        <button type="submit">Login</button>
+      </form>
+    </div>
+    
+  </div>
+  

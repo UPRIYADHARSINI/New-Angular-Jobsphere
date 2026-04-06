@@ -1,0 +1,50 @@
+<div class="edit-profile-container">
+    <h2>Edit Profile</h2>
+    <form (ngSubmit)="saveProfile()">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" [(ngModel)]="recruiter.name" name="name" required />
+      </div>
+      <div class="form-group">
+        <label for="companyType">Company Type:</label>
+        <input type="text" id="companyType" [(ngModel)]="recruiter.companyType" name="companyType" required />
+      </div>
+      <div class="form-group">
+        <label for="companyName">Company Name:</label>
+        <input type="text" id="companyName" [(ngModel)]="recruiter.companyName" name="companyName" required />
+      </div>
+      <div class="form-group">
+        <label for="mainBranch">Main Branch:</label>
+        <input type="text" id="mainBranch" [(ngModel)]="recruiter.mainBranch" name="mainBranch" />
+      </div>
+      <div class="form-group">
+        <label for="experience">Experience (Years):</label>
+        <input type="number" id="experience" [(ngModel)]="recruiter.experience" name="experience" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" [(ngModel)]="recruiter.email" name="email" required readonly />
+      </div>
+      <div class="form-group">
+        <label for="contactNumber">Contact Number:</label>
+        <input type="text" id="contactNumber" [(ngModel)]="recruiter.contactNumber" name="contactNumber" />
+      </div>
+      <div class="form-group">
+        <label for="website">Website:</label>
+        <input type="text" id="website" [(ngModel)]="recruiter.website" name="website" />
+      </div>
+      <div class="form-group">
+        <label>Current Profile Picture:</label>
+        <img [src]="recruiter.profileImageUrl || '/profile-icon.png'" alt="Profile Picture" class="profile-pic-preview" />
+      </div>
+      <div class="form-group">
+        <label for="profileImage">Upload New Profile Picture:</label>
+        <input type="file" id="profileImage" (change)="onFileSelected($event)" accept="image/*" />
+        <button type="button" class="btn blue" (click)="uploadProfilePicture()">Upload Picture</button>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn blue">Save</button>
+        <button type="button" class="btn yellow" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  </div>

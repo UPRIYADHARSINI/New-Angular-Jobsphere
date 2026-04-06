@@ -1,0 +1,27 @@
+<div class="modal-overlay">
+  <div class="modal-content">
+    <h2>User Activity: {{ userData?.user.name }}</h2>
+
+    <div class="section">
+      <h3>Job Applications</h3>
+      <div *ngIf="userData?.appliedJobs.length === 0">No job applications found.</div>
+      <div class="card" *ngFor="let app of userData?.appliedJobs">
+        <p><strong>Job Title:</strong> {{ app.jobId.jobTitle }}</p>
+        <p><strong>Company:</strong> {{ app.jobId.companyName }}</p>
+        <p><strong>Applied On:</strong> {{ app.appliedDate | date:'medium' }}</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Login History</h3>
+      <div *ngIf="userData?.loginHistory.length === 0">No login history found.</div>
+      <div class="card" *ngFor="let log of userData?.loginHistory">
+        <p><strong>Email:</strong> {{ log.email }}</p>
+        <p><strong>Role:</strong> {{ log.role }}</p>
+        <p><strong>Login Time:</strong> {{ log.loginTime | date:'medium' }}</p>
+      </div>
+    </div>
+
+    <button class="close-btn" (click)="close.emit()">Close</button>
+  </div>
+</div>

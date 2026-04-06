@@ -1,0 +1,77 @@
+.recruiter-register-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+    padding: 50px;
+    min-height: 100vh;
+    background: linear-gradient(to right, #dbeafe, #eff6ff);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .info-section {
+    width: 400px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .info-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .info-section ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .info-section li {
+    margin: 15px 0;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .recruiter-img {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .form-section {
+    width: 500px;
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  input,
+  select {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+  
+  .register-btn {
+    padding: 14px;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .register-btn:hover {
+    background-color: #0056b3;
+  }
+  

@@ -1,0 +1,152 @@
+<div class="home-container">
+  <header class="navbar">
+    <!-- Logo -->
+    <img src="/logo.jpg" alt="JobSphere Logo" class="logo" />
+
+    <nav class="nav-links">
+      <div class="dropdown" (mouseenter)="activeMenu = 'jobs'" (mouseleave)="activeMenu = ''">
+        <a href="#">Jobs</a>
+        <div class="dropdown-content" *ngIf="activeMenu === 'jobs'">
+          <div>
+            <h4>Popular categories</h4>
+            <ul>
+              <li>IT jobs</li>
+              <li>Sales jobs</li>
+              <li>Marketing jobs</li>
+              <li>Data Science jobs</li>
+              <li>HR jobs</li>
+              <li>Engineering jobs</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Jobs in demand</h4>
+            <ul>
+              <li>Fresher jobs</li>
+              <li>MNC jobs</li>
+              <li>Remote jobs</li>
+              <li>Work from home jobs</li>
+              <li>Walk-in jobs</li>
+              <li>Part-time jobs</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Jobs by location</h4>
+            <ul>
+              <li>Jobs in Delhi</li>
+              <li>Jobs in Mumbai</li>
+              <li>Jobs in Bangalore</li>
+              <li>Jobs in Hyderabad</li>
+              <li>Jobs in Chennai</li>
+              <li>Jobs in Pune</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown" (mouseenter)="activeMenu = 'companies'" (mouseleave)="activeMenu = ''">
+        <a href="#">Companies</a>
+        <div class="dropdown-content" *ngIf="activeMenu === 'companies'">
+          <div>
+            <h4>Explore categories</h4>
+            <ul>
+              <li>Unicorn</li>
+              <li>MNC</li>
+              <li>Startup</li>
+              <li>Product based</li>
+              <li>Internet</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Explore collections</h4>
+            <ul>
+              <li>Top companies</li>
+              <li>IT companies</li>
+              <li>Fintech companies</li>
+              <li>Sponsored companies</li>
+              <li>Featured companies</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Research companies</h4>
+            <ul>
+              <li>Interview questions</li>
+              <li>Company salaries</li>
+              <li>Company reviews</li>
+              <li>Salary calculator</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown" (mouseenter)="activeMenu = 'services'" (mouseleave)="activeMenu = ''">
+        <a href="#">Services</a>
+        <div class="dropdown-content" *ngIf="activeMenu === 'services'">
+          <div>
+            <h4>Resume writing</h4>
+            <ul>
+              <li>Text resume</li>
+              <li>Visual resume</li>
+              <li>Resume critique</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Find Jobs</h4>
+            <ul>
+              <li>Jobs4u</li>
+              <li>Priority applicant</li>
+              <li>Contact us</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Free resume resources</h4>
+            <ul>
+              <li>Resume maker</li>
+              <li>Resume quality score</li>
+              <li>Resume samples</li>
+              <li>Job letter samples</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="auth-buttons">
+      <button class="login-btn" (click)="openLoginModal()">Login</button>
+      <button class="register-btn" (click)="openModal()">Register</button>
+    </div>
+  </header>
+
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Welcome to <span class="highlight">JobSphere</span></h1>
+      <p>Your one-stop destination for job seekers and recruiters.</p>
+      <h2>About JobSphere</h2>
+      <p>We connect talents with top companies. Whether you're seeking full-time roles, part-time gigs, or internships, we’ve got you covered.</p>
+    </div>
+  </section>
+
+  <!-- Register Modal -->
+  <div class="modal" *ngIf="showModal">
+    <div class="modal-content">
+      <h2>Select your role</h2>
+      <div class="role-buttons">
+        <button class="user-btn" (click)="goToUserRegister()">User</button>
+        <button class="recruiter-btn" (click)="goToRecruiterRegister()">Recruiter</button>
+      </div>
+      <button class="close-btn" (click)="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal" *ngIf="showLoginModal">
+    <div class="modal-content">
+      <h2>Select your role to login</h2>
+      <div class="role-buttons">
+        <button class="user-btn" (click)="goToUserLogin()">User</button>
+        <button class="recruiter-btn" (click)="goToRecruiterLogin()">Recruiter</button>
+        <button class="admin-btn" (click)="goToAdminLogin()">Admin</button>
+      </div>
+      <button class="close-btn" (click)="closeLoginModal()">Close</button>
+    </div>
+  </div> 
+</div>
