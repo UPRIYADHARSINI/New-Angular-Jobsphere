@@ -63,7 +63,7 @@ export class PostJobHomeComponent implements OnInit {
       return;
     }
 
-    this.http.post('http://localhost:5000/api/post-job', this.job).subscribe({
+    this.http.post('https://new-angular-jobsphere.onrender.com/api/post-job', this.job).subscribe({
       next: (response) => {
         console.log('Job posted:', response);
         alert('✅ Job posted successfully!');

@@ -21,7 +21,7 @@ export class AdminHomeComponent implements OnInit {
   showRecruiterModal: boolean = false;
   errorMessage: string = ''; // Add error message property
 
-  private apiUrl = 'http://localhost:5000/api';
+  private apiUrl = 'https://new-angular-jobsphere.onrender.com/api';
 
   constructor(private http: HttpClient, private router: Router) {}
 

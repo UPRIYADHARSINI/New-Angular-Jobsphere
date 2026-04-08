@@ -15,7 +15,7 @@ export class UserAppliedJobsComponent implements OnInit {
   userId: string = ''; // Initialize as empty string
   errorMessage: string = '';
 
-  private apiUrl = 'http://localhost:5000/api';
+  private apiUrl = 'https://new-angular-jobsphere.onrender.com/api';
 
   constructor(
     private http: HttpClient,

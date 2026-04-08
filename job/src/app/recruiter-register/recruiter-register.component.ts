@@ -31,7 +31,7 @@ export class RecruiterRegistrationComponent {
       return;
     }
 
-    this.http.post('http://localhost:5000/api/recruiter-register', this.recruiter)
+    this.http.post('https://new-angular-jobsphere.onrender.com/api/recruiter-register', this.recruiter)
       .subscribe({
         next: (response) => {
           console.log(response);

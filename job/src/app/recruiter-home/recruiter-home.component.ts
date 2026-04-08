@@ -59,7 +59,7 @@ export class RecruiterHomeComponent implements OnInit {
       } else {
         const email = localStorage.getItem('recruiterEmail');
         if (email) {
-          this.http.get<{ recruiter: Recruiter }>(`http://localhost:5000/api/get-recruiter/${email}`).subscribe({
+          this.http.get<{ recruiter: Recruiter }>(`https://new-angular-jobsphere.onrender.com/api/get-recruiter/${email}`).subscribe({
             next: (response) => {
               this.recruiter = response.recruiter;
               localStorage.setItem('recruiter', JSON.stringify(this.recruiter));
@@ -83,7 +83,7 @@ export class RecruiterHomeComponent implements OnInit {
 
   fetchPostedJobs(): void {
     if (this.recruiter?._id) {
-      this.http.get<{ jobs: Job[] }>(`http://localhost:5000/api/recruiter-jobs/${this.recruiter._id}`).subscribe({
+      this.http.get<{ jobs: Job[] }>(`https://new-angular-jobsphere.onrender.com/api/recruiter-jobs/${this.recruiter._id}`).subscribe({
         next: (res) => {
           this.postedJobs = res.jobs || [];
           console.log('Fetched jobs:', this.postedJobs);
@@ -98,7 +98,7 @@ export class RecruiterHomeComponent implements OnInit {
   }
 
   recruitApplicant(jobId: string, applicantEmail: string): void {
-    this.http.put<{ message: string; job: Job }>(`http://localhost:5000/api/recruit-candidate/${jobId}/${applicantEmail}`, {}).subscribe({
+    this.http.put<{ message: string; job: Job }>(`https://new-angular-jobsphere.onrender.com/api/recruit-candidate/${jobId}/${applicantEmail}`, {}).subscribe({
       next: (response) => {
         alert('✅ Candidate recruited!');
         const jobIndex = this.postedJobs.findIndex(job => job._id === jobId);
@@ -115,7 +115,7 @@ export class RecruiterHomeComponent implements OnInit {
 
   deleteJob(jobId: string): void {
     if (confirm('Are you sure you want to delete this job?')) {
-      this.http.delete(`http://localhost:5000/api/delete-job/${jobId}`).subscribe({
+      this.http.delete(`https://new-angular-jobsphere.onrender.com/api/delete-job/${jobId}`).subscribe({
         next: () => {
           alert('✅ Job deleted successfully!');
           this.postedJobs = this.postedJobs.filter(job => job._id !== jobId);

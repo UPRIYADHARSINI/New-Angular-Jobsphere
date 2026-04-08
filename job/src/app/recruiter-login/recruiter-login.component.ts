@@ -41,7 +41,7 @@ export class RecruiterLoginComponent {
     }
 
     this.http.post<{ message: string; recruiter: Recruiter; recruiterId: string }>(
-      'http://localhost:5000/api/recruiter-login',
+      'http://new-angular-jobsphere.onrender.com/api/recruiter-login',
       this.recruiter
     ).subscribe(
       (response) => {

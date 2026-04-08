@@ -70,7 +70,7 @@ export class RecruiterProfileComponent implements OnInit {
     formData.append('profilePhoto', this.selectedFile);
 
     this.http.post<{ message: string; recruiter: Recruiter }>(
-      `http://localhost:5000/api/upload-recruiter-profile-photo/${this.recruiter.email}`,
+      `https://new-angular-jobsphere.onrender.com/api/upload-recruiter-profile-photo/${this.recruiter.email}`,
       formData
     ).subscribe({
       next: (response) => {
@@ -87,7 +87,7 @@ export class RecruiterProfileComponent implements OnInit {
 
   saveProfile(): void {
     this.http.put<{ message: string; recruiter: Recruiter }>(
-      `http://localhost:5000/api/update-recruiter/${this.recruiter.email}`,
+      `https://new-angular-jobsphere.onrender.com/api/update-recruiter/${this.recruiter.email}`,
       this.recruiter
     ).subscribe({
       next: (response) => {

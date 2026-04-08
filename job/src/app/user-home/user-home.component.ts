@@ -63,7 +63,7 @@ export class UserHomeComponent implements OnInit {
   }
 
   fetchJobs() {
-    this.http.get<{ jobs: Job[] }>('http://localhost:5000/api/get-jobs').subscribe({
+    this.http.get<{ jobs: Job[] }>('https://new-angular-jobsphere.onrender.com/api/get-jobs').subscribe({
       next: (response) => {
         this.jobs = response.jobs;
         console.log('Fetched jobs:', this.jobs);
@@ -100,7 +100,7 @@ export class UserHomeComponent implements OnInit {
 
     console.log('Sending application data:', applyData);
 
-    this.http.post('http://localhost:5000/api/apply-job', applyData).subscribe({
+    this.http.post('https://new-angular-jobsphere.onrender.com/api/apply-job', applyData).subscribe({
       next: (response) => {
         console.log('Apply response:', response);
         alert('✅ Job applied successfully!');
