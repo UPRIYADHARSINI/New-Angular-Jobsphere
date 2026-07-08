@@ -35,9 +35,10 @@ mongoose.connect("mongodb+srv://Jobsphere:Priya%402004@cluster0.dbaghil.mongodb.
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
-.then(() => console.log('✅ MongoDB Connected Successfully!'))
-.catch(err => console.error('❌ MongoDB Connection Failed:', err));
-
+.then(() => console.log("✅ MongoDB Connected Successfully!"))
+.catch(err => {
+    console.error("MongoDB ERROR:", err);
+});
 // Schemas
 const UserSchema = new mongoose.Schema({
   name: String,
@@ -174,7 +175,13 @@ app.post('/api/user-login', async (req, res) => {
       res.status(401).send({ message: '❌ Invalid credentials!' });
     }
   } catch (err) {
-    res.status(500).send({ message: '❌ Error during login', error: err });
+  console.error("USER LOGIN ERROR:", err);
+
+  res.status(500).json({
+    message: "❌ Error during login",
+    error: err.message,
+    stack: err.stack
+    });
   }
 });
 
