@@ -42,7 +42,7 @@ export class UserRegistrationComponent {
       return;
     }
 
-    this.http.post('https://new-angular-jobsphere.onrender.com/api/user-register', this.user).subscribe({
+    this.http.post('https://new-angular-jobsphere-2.onrender.com/api/user-register', this.user).subscribe({
       next: (res: any) => {
         alert('✅ User Registered Successfully!');
         this.router.navigate(['/user-login']); // Navigate to login page after registration
