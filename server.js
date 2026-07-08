@@ -16,7 +16,8 @@ const PORT = process.env.PORT || 5000;
 app.use(cors({
   origin: [
     "http://localhost:4200",
-    "https://your-frontend.onrender.com"
+    "https://new-angular-jobsphere.onrender.com",
+    "https://new-angular-jobsphere-2.onrender.com"
   ]
 }));
 app.use(bodyParser.json());
@@ -435,7 +436,9 @@ app.put('/api/user/:id', async (req, res) => {
 // Upload Resume
 app.post('/api/upload-resume/:id', upload.single('resume'), async (req, res) => {
   if (!req.file) return res.status(400).json({ message: '❌ No file uploaded' });
-  const filePath = `http://localhost:${PORT}/uploads/${req.file.filename}`;
+  const BASE_URL = process.env.RENDER_EXTERNAL_URL || `http://localhost:${PORT}`;
+  const filePath = `${BASE_URL}/uploads/${req.file.filename}`;
+  const imagePath = `${BASE_URL}/uploads/${req.file.filename}`;
   try {
     const updated = await User.findByIdAndUpdate(req.params.id, { resumeUrl: filePath }, { new: true }).select('-password');
     if (!updated) return res.status(404).json({ message: '❌ User not found' });
@@ -448,7 +451,7 @@ app.post('/api/upload-resume/:id', upload.single('resume'), async (req, res) => 
 // Upload Profile Photo
 app.post('/api/upload-profile-photo/:id', upload.single('profilePhoto'), async (req, res) => {
   if (!req.file) return res.status(400).json({ message: '❌ No file uploaded' });
-  const imagePath = `http://localhost:${PORT}/uploads/${req.file.filename}`;
+  const imagePath = `https://new-angular-jobsphere.onrender.com:${PORT}/uploads/${req.file.filename}`;
   try {
     const updated = await User.findByIdAndUpdate(req.params.id, { profileImageUrl: imagePath }, { new: true }).select('-password');
     if (!updated) return res.status(404).json({ message: '❌ User not found' });
@@ -488,7 +491,8 @@ app.put('/api/update-recruiter/:email', async (req, res) => {
 // Upload Profile Photo for Recruiter
 app.post('/api/upload-recruiter-profile-photo/:email', upload.single('profilePhoto'), async (req, res) => {
   if (!req.file) return res.status(400).json({ message: '❌ No file uploaded' });
-  const imagePath = `http://localhost:${PORT}/uploads/${req.file.filename}`;
+  const BASE_URL = process.env.RENDER_EXTERNAL_URL || `http://localhost:${PORT}`;
+  const imagePath = `${BASE_URL}/uploads/${req.file.filename}`;
   try {
     const updated = await Recruiter.findOneAndUpdate(
       { email: req.params.email },
