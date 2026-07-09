@@ -41,7 +41,7 @@ export class RecruiterLoginComponent {
     }
 
     this.http.post<{ message: string; recruiter: Recruiter; recruiterId: string }>(
-      'http://new-angular-jobsphere.onrender.com/api/recruiter-login',
+      'https://jobsphere-backend-zja7.onrender.com/api/recruiter-login',
       this.recruiter
     ).subscribe(
       (response) => {

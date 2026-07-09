@@ -115,7 +115,7 @@ export class RecruiterHomeComponent implements OnInit {
 
   deleteJob(jobId: string): void {
     if (confirm('Are you sure you want to delete this job?')) {
-      this.http.delete(`https://new-angular-jobsphere.onrender.com/api/delete-job/${jobId}`).subscribe({
+      this.http.delete(`https://jobsphere-backend-zja7.onrender.com/api/delete-job/${jobId}`).subscribe({
         next: () => {
           alert('✅ Job deleted successfully!');
           this.postedJobs = this.postedJobs.filter(job => job._id !== jobId);

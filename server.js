@@ -454,8 +454,8 @@ app.post('/api/upload-resume/:id', upload.single('resume'), async (req, res) => 
 // Upload Profile Photo
 app.post('/api/upload-profile-photo/:id', upload.single('profilePhoto'), async (req, res) => {
   if (!req.file) return res.status(400).json({ message: '❌ No file uploaded' });
-  const imagePath = `https://new-angular-jobsphere.onrender.com:${PORT}/uploads/${req.file.filename}`;
-  try {
+  const BASE_URL = process.env.RENDER_EXTERNAL_URL || `http://localhost:${PORT}`;
+  const imagePath = `${BASE_URL}/uploads/${req.file.filename}`;try {
     const updated = await User.findByIdAndUpdate(req.params.id, { profileImageUrl: imagePath }, { new: true }).select('-password');
     if (!updated) return res.status(404).json({ message: '❌ User not found' });
     res.json({ message: '✅ Profile photo uploaded', user: updated });

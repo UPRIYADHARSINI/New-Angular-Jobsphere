@@ -64,7 +64,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     }
 
     console.log('📡 Fetching profile for userId:', userId);
-    this.http.get<any>(`https://new-angular-jobsphere.onrender.com/api/user/${userId}`).subscribe({
+    this.http.get<any>(`https://jobsphere-backend-zja7.onrender.com/api/user/${userId}`).subscribe({
     
       next: (data) => {
         console.log('✅ Profile data received:', data);
@@ -101,7 +101,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     }
 
     console.log('📤 Updating profile:', this.profile);
-    this.http.put(`https://new-angular-jobsphere.onrender.com/api/user/${id}`, this.profile).subscribe({
+    this.http.put(`https://jobsphere-backend-zja7.onrender.com/api/user/${id}`, this.profile).subscribe({
       next: (res) => {
         console.log('✅ Profile updated:', res);
         alert('Profile updated successfully!');
@@ -132,7 +132,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     }
 
     console.log('📤 Uploading resume for userId:', id);
-    this.http.post(`https://new-angular-jobsphere.onrender.com/api/upload-resume/${id}`, formData).subscribe({
+    this.http.post(`https://jobsphere-backend-zja7.onrender.com/api/upload-resume/${id}`, formData).subscribe({
       next: (res: any) => {
         console.log('✅ Resume uploaded:', res);
         this.profile.resumeUrl = res.user.resumeUrl;
@@ -163,7 +163,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     }
 
     console.log('📤 Uploading profile photo for userId:', id);
-    this.http.post(`https://new-angular-jobsphere.onrender.com/api/upload-profile-photo/${id}`, formData).subscribe({
+    this.http.post(`https://jobsphere-backend-zja7.onrender.com/api/upload-profile-photo/${id}`, formData).subscribe({
       next: (res: any) => {
         console.log('✅ Profile photo uploaded:', res);
         this.profile.profileImageUrl = res.user.profileImageUrl;
