@@ -43,4 +43,5 @@ Thumbs.db
 .env
 .env.*
 job/node_modules/
+node_modules
 job/dist/
