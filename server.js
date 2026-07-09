@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -31,14 +32,9 @@ if (!fs.existsSync(uploadsDir)) {
 }
 
 // MongoDB Connection
-mongoose.connect("mongodb+srv://Jobsphere:Priya%402004@cluster0.dbaghil.mongodb.net/jobsphere", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log("✅ MongoDB Connected Successfully!"))
-.catch(err => {
-    console.error("MongoDB ERROR:", err);
-});
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log("✅ MongoDB Connected Successfully!"))
+  .catch(err => console.error("MongoDB ERROR:", err));
 // Schemas
 const UserSchema = new mongoose.Schema({
   name: String,
